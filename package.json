@@ -4,8 +4,8 @@
   "description": "JavaHutt personal webpack build",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --env development --mode development",
+    "build": "webpack --env production --mode production"
   },
   "author": "Alex Karle",
   "keywords": [
