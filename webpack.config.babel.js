@@ -11,8 +11,8 @@ const PATHS = {
 const config = {
     entry: PATHS.source + '/js/index.js',
     output: {
-        path: PATHS.build + '/js',
-        filename: 'index.js',
+        path: PATHS.build,
+        filename: 'js/index.js',
         publicPath:'/'
     },
     devServer: {
@@ -37,7 +37,9 @@ const config = {
         new HtmlWebpackPlugin({
             template: PATHS.source + '/index.pug',
             filename: 'index.html',
-            title: 'Webpack App'
+            title: 'Webpack App',
+            favicon: PATHS.source + '/favicon.ico',
+            inject: true
         }),
         new CleanWebpackPlugin([
             'dist' 
