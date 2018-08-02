@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
@@ -79,12 +80,22 @@ const developmentConfig = {
                 }
             },
             {
-                test: /\.s?c?a?ss$/,
+                test: /\.css$/,
                 use: [
                     'style-loader',
-                    'css-loader',
-                    'sass-loader'
+                    'css-loader'
                 ]
+            },
+            {
+                test: /\.sc?a?ss$/,
+                use: ExtractTextPlugin.extract({
+                    publicPath: '../', 
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                })
             }
         ]
     },
@@ -96,6 +107,7 @@ const developmentConfig = {
             favicon: PATHS.source + '/favicon.ico',
             inject: true
         }),
+        new ExtractTextPlugin("styles.css"),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
