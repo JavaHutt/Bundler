@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+import webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
@@ -12,7 +12,8 @@ const config = {
     entry: PATHS.source + '/js/index.js',
     output: {
         path: PATHS.build + '/js',
-        filename: 'index.js'
+        filename: 'index.js',
+        publicPath:'/'
     },
     devServer: {
         overlay: true
@@ -20,13 +21,21 @@ const config = {
     module: {
         rules: [
             {
-
+                test: /\.js$/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.pug$/,
+                loader: 'pug-loader',
+                options: {
+                    pretty: true
+                }
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: PATHS.source + '/index.html',
+            template: PATHS.source + '/index.pug',
             filename: 'index.html',
             title: 'Webpack App'
         }),
