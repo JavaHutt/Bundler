@@ -3,6 +3,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
@@ -38,7 +39,7 @@ const productionConfig = {
                     publicPath: '../', 
                     fallback: 'style-loader',
                     use: [
-                        'css-loader'
+                        'css-loader?url=false'
                     ]
                 })
             },
@@ -48,10 +49,17 @@ const productionConfig = {
                     publicPath: '../', 
                     fallback: 'style-loader',
                     use: [
-                        'css-loader',
+                        'css-loader?url=false',
                         'sass-loader'
                     ]
                 })
+            },
+            {
+                test: /\.(jpg|png|gif)$|(img\.svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: { name: 'images/[name].[ext]' }
+                }
             }
         ]
     },
@@ -62,6 +70,9 @@ const productionConfig = {
             title: 'Webpack App',
             favicon: PATHS.source + '/favicon.ico',
             inject: true
+        }),
+        new UglifyJsPlugin({
+            sourceMap: true
         }),
         new CleanWebpackPlugin([
             'dist' 
@@ -107,7 +118,7 @@ const developmentConfig = {
                     publicPath: '../', 
                     fallback: 'style-loader',
                     use: [
-                        'css-loader'
+                        'css-loader?url=false'
                     ]
                 })
             },
@@ -117,10 +128,17 @@ const developmentConfig = {
                     publicPath: '../', 
                     fallback: 'style-loader',
                     use: [
-                        'css-loader',
+                        'css-loader?url=false',
                         'sass-loader'
                     ]
                 })
+            },
+            {
+                test: /\.(jpg|png|gif)$|(img\.svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: { name: 'images/[name].[ext]' }
+                }
             }
         ]
     },
