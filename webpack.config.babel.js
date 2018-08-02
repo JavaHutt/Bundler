@@ -14,7 +14,7 @@ const productionConfig = {
     output: {
         path: PATHS.build,
         filename: 'js/index.js',
-        publicPath:'/'
+        publicPath:''
     },
     devServer: {
         overlay: true
@@ -31,6 +31,27 @@ const productionConfig = {
                 options: {
                     pretty: true
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    publicPath: '../', 
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader'
+                    ]
+                })
+            },
+            {
+                test: /\.sc?a?ss$/,
+                use: ExtractTextPlugin.extract({
+                    publicPath: '../', 
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                })
             }
         ]
     },
@@ -49,6 +70,7 @@ const productionConfig = {
              root: __dirname,
              watch: false 
         }),
+        new ExtractTextPlugin("css/styles.css"),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
@@ -81,10 +103,13 @@ const developmentConfig = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
+                use: ExtractTextPlugin.extract({
+                    publicPath: '../', 
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader'
+                    ]
+                })
             },
             {
                 test: /\.sc?a?ss$/,
