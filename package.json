@@ -1,0 +1,23 @@
+{
+  "name": "bundler",
+  "version": "1.0.0",
+  "description": "JavaHutt personal webpack build",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "author": "Alex Karle",
+  "keywords": [
+    "webpack",
+    "es6",
+    "babel",
+    "sass"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "path": "0.12.7",
+    "webpack": "4.16.3",
+    "webpack-cli": "3.1.0"
+  }
+}
