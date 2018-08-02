@@ -1,11 +1,23 @@
+const webpack = require('webpack');
 const path = require('path');
 
+const PATHS = {
+    source: path.join(__dirname, 'src'),
+    build: path.join(__dirname, 'dist')
+}
+
 const config = {
-    entry: './src/js/index.js',
+    entry: PATHS.source + '/js/index.js',
     output: {
-        path: path.resolve(__dirname, './dist/js'),
+        path: PATHS.build + '/js',
         filename: 'index.js'
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
 };
 
 module.exports = config;
