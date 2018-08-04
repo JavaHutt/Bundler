@@ -3,6 +3,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 const PATHS = {
@@ -14,8 +15,7 @@ const productionConfig = {
     entry: PATHS.source + '/js/index.js',
     output: {
         path: PATHS.build,
-        filename: 'js/index.js',
-        publicPath:''
+        filename: 'js/index.js'
     },
     devServer: {
         overlay: true
@@ -55,10 +55,14 @@ const productionConfig = {
                 })
             },
             {
-                test: /\.(jpg|png|gif)$|(img\.svg)$/,
+                test: /\.(jpe?g|png|gif)$|(img\.svg)$/,
                 use: {
                     loader: 'file-loader',
-                    options: { name: 'images/[name].[ext]' }
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'img/',
+                        publicPath: 'img/'
+                    }
                 }
             }
         ]
@@ -71,6 +75,10 @@ const productionConfig = {
             favicon: PATHS.source + '/favicon.ico',
             inject: true
         }),
+        new ExtractTextPlugin("css/styles.css"),
+        new CopyWebpackPlugin([
+            {from:'src/img',to:'img'} 
+        ]), 
         new UglifyJsPlugin({
             sourceMap: true
         }),
@@ -81,7 +89,6 @@ const productionConfig = {
              root: __dirname,
              watch: false 
         }),
-        new ExtractTextPlugin("css/styles.css"),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
@@ -134,10 +141,12 @@ const developmentConfig = {
                 })
             },
             {
-                test: /\.(jpg|png|gif)$|(img\.svg)$/,
+                test: /\.(jpe?g|png|gif)$|(img\.svg)$/,
                 use: {
                     loader: 'file-loader',
-                    options: { name: 'images/[name].[ext]' }
+                    options: { 
+                        name: 'img/[name].[ext]'
+                    }
                 }
             }
         ]
