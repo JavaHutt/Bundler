@@ -125,7 +125,7 @@ const developmentConfig = {
                     publicPath: '../', 
                     fallback: 'style-loader',
                     use: [
-                        'css-loader?url=false'
+                        'css-loader'
                     ]
                 })
             },
@@ -135,7 +135,7 @@ const developmentConfig = {
                     publicPath: '../', 
                     fallback: 'style-loader',
                     use: [
-                        'css-loader?url=false',
+                        'css-loader',
                         'sass-loader'
                     ]
                 })
