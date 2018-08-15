@@ -1,10 +1,10 @@
-import webpack from 'webpack';
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
@@ -77,14 +77,8 @@ const productionConfig = {
         }),
         new ExtractTextPlugin("css/styles.css"),
         new CopyWebpackPlugin([
-            {
-                from:'src/img',
-                to:'img'
-            } 
-        ]), 
-        new UglifyJsPlugin({
-            sourceMap: true
-        }),
+            {from:'src/img',to:'img'} 
+        ]),
         new CleanWebpackPlugin([
             'dist' 
         ],
@@ -149,16 +143,6 @@ const developmentConfig = {
                     loader: 'file-loader',
                     options: { 
                         name: 'img/[name].[ext]'
-                    }
-                }
-            },
-            {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
                     }
                 }
             }
