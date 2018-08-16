@@ -41,6 +41,12 @@ module.exports = merge(common, {
                         publicPath: 'img/'
                     }
                 }
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                    use: [
+                    'file-loader'
+                ]
             }
         ]
     }

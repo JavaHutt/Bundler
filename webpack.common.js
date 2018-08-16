@@ -27,7 +27,7 @@ module.exports = {
                 options: {
                     pretty: true
                 }
-            },
+            }
         ]
     },
     plugins: [
@@ -40,7 +40,8 @@ module.exports = {
         }),
         new ExtractTextPlugin("styles.css"),
         new CopyWebpackPlugin([
-            {from:'src/img',to: 'img'} 
+            {from:'src/img',to: 'img'},
+            {from:'src/fonts',to: 'fonts'}  
         ]),
         new webpack.ProvidePlugin({
             $: 'jquery',
