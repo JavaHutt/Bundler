@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
     source: path.join(__dirname, 'src'),
@@ -13,10 +14,7 @@ module.exports = {
     output: {
         path: PATHS.build,
         filename: 'js/index.js'
-    },
-    devServer: {
-        overlay: true
-    },
+    },    
     module: {
         rules: [
             {
@@ -41,6 +39,9 @@ module.exports = {
             inject: true
         }),
         new ExtractTextPlugin("styles.css"),
+        new CopyWebpackPlugin([
+            {from:'src/img',to: 'img'} 
+        ]),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'

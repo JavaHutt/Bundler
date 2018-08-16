@@ -1,6 +1,5 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -44,9 +43,6 @@ module.exports = merge(common, {
         ]
     },
     plugins: [
-        new CopyWebpackPlugin([
-            {from:'src/img',to: 'img'} 
-        ]),
         new CleanWebpackPlugin([
             'dist' 
         ],
