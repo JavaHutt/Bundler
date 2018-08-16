@@ -38,13 +38,13 @@ module.exports = merge(common, {
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'img/',
-                        publicPath: 'img/'
+                         publicPath: 'img/'
                     }
                 }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                    use: [
+                use: [
                     'file-loader'
                 ]
             }

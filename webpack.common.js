@@ -24,8 +24,11 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                include: /src/,
-                loader: 'eslint-loader'
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader',
+                    'eslint-loader'
+                ]
             },
             {
                 test: /\.pug$/,
@@ -44,7 +47,7 @@ module.exports = {
             favicon: PATHS.source + '/favicon.ico',
             inject: true
         }),
-        new ExtractTextPlugin("styles.css"),
+        new ExtractTextPlugin('styles.css'),
         new CopyWebpackPlugin([
             {from:'src/img',to: 'img'},
             {from:'src/fonts',to: 'fonts'}  

@@ -58,8 +58,8 @@ module.exports = merge(common, {
             'dist' 
         ],
         {
-             root: __dirname,
-             watch: false 
+            root: __dirname,
+            watch: false 
         })
     ]
 });
