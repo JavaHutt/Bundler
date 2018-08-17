@@ -2,6 +2,6 @@ import '../css/style.sass';
 import sampleScript from './sample';
 
 $(() => {
-     console.log('ready!');
-    sampleScript();
+    console.log('ready!');
+     sampleScript();
 });

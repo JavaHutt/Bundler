@@ -5,8 +5,10 @@
         "es6": true,
         "jquery": true
     },
+    "extends": "airbnb-base",
     "parser": "babel-eslint",
     "rules": {
+        "linebreak-style": "off",
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "quotes": ["error", "single"],
         "no-console": "off"
