@@ -3,5 +3,5 @@ import sampleScript from './sample';
 
 $(() => {
     console.log('ready!');
-     sampleScript();
+    sampleScript();
 });
