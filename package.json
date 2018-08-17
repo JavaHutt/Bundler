@@ -18,7 +18,9 @@
     "precommit": "lint-staged"
   },  
   "lint-staged": {
-    "src/js/*.{js}": [ "eslint", "git add" ]
+    "src/js/*.js": [
+       "eslint --fix", "git add"
+      ]
   },
   "devDependencies": {
     "babel-core": "6.26.3",
