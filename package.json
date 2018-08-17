@@ -11,21 +11,14 @@
     "sass"
   ],
   "license": "ISC",
-  "sideEffects": false,
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
-    }
-  },
+  "sideEffects": false, 
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "precommit": "lint-staged"
   },  
   "lint-staged": {
-    "src/**/*.js": [
-       "eslint", "git add"
-      ]
+    "src/**/*.js": "eslint"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
