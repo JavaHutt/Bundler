@@ -12,14 +12,19 @@
   ],
   "license": "ISC",
   "sideEffects": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "lint-staged"
+    }
+  },
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "precommit": "lint-staged"
+    "build": "webpack --config webpack.prod.js"
   },  
   "lint-staged": {
-    "src/js/*.js": [
-       "eslint --fix", "git add"
+    "src/**/*.js": [
+       "eslint", "git add"
       ]
   },
   "devDependencies": {
