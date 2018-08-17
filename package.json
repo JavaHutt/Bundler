@@ -14,13 +14,9 @@
   "sideEffects": false,
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+    "build": "webpack --config webpack.prod.js",
+    "precommit": "npm test"
+  },  
   "lint-staged": {
     "src/**/*.js": [
       "eslint",
