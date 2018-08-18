@@ -1,4 +1,8 @@
-p Background image:
-.bgimage
-p simple image:
-img(src="img/img2.png", alt="Webpack Logo")
+-var list = ['pug template engine', 'sass/scss preprocessor', 'airbnb-eslint', 'babel compiler'];
+
+img.main__image(src="img/img.png", alt="Webpack Logo")
+h1.main__header JavaHutt personal build
+h2.main__sub-header powered by Webpack 4
+ul.main__list
+    each item in list
+        li.main__list-item= item

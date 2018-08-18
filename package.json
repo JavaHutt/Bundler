@@ -5,24 +5,25 @@
   "main": "index.js",
   "author": "Alex Karle",
   "keywords": [
-    "webpack",
+    "webpack 4",
     "es6",
     "babel",
-    "sass"
+    "sass",
+    "pug"
   ],
   "license": "ISC",
-  "sideEffects": false, 
+  "sideEffects": false,
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "precommit": "lint-staged"
-  },  
+  },
   "lint-staged": {
     "src/**/*.js": "eslint"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "8.2.6",
     "babel-loader": "7.1.5",
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-3": "6.24.1",
@@ -30,14 +31,13 @@
     "copy-webpack-plugin": "4.5.2",
     "css-loader": "1.0.0",
     "eslint": "5.3.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-loader": "2.1.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14.0",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "1.1.11",
     "html-webpack-plugin": "3.2.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
+    "husky": "0.14.3",
+    "lint-staged": "7.2.2",
     "node-sass": "4.9.2",
     "path": "0.12.7",
     "pug": "2.0.3",
@@ -47,7 +47,7 @@
     "webpack": "4.16.3",
     "webpack-cli": "3.1.0",
     "webpack-dev-server": "3.1.5",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "4.1.4"
   },
   "dependencies": {
     "jquery": "3.3.1",
