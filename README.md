@@ -4,7 +4,6 @@
  - `pug`
  - `sass/scss`
  - `babel`
- - `sass/scss`
  - `eslint`
  - `pre-commit hooks`
 
